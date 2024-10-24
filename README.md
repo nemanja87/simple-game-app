@@ -16,3 +16,4 @@ This is a simple game implementation of Rock-Paper-Scissors-Lizard-Spock, develo
 1. Clone the repository: `git clone https://github.com/yourusername/simple-game-app.git`
 2. Navigate to the project directory: `cd simple-game-app`
 3. Install dependencies: `npm install`
+4. Make sure that .NET app is also up and running with all three services
