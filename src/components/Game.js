@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import API_ENDPOINTS from '../config';
+
 
 const Game = () => {
     const [playerChoice, setPlayerChoice] = useState('');
@@ -8,28 +10,28 @@ const Game = () => {
 
     // Map string choices to their corresponding numeric values
     const choices = {
-        rock: 0,
-        paper: 1,
-        scissors: 2,
-        lizard: 3,
-        spock: 4
+        rock: 1,
+        paper: 2,
+        scissors: 3,
+        lizard: 4,
+        spock: 5
     };
 
     const playGame = async (choice) => {
         setPlayerChoice(choice);
         try {
-            const response = await axios.post('https://localhost:44356/api/Game/play', 
-                choices[choice],  // Send the numeric value directly
+            const response = await axios.post(API_ENDPOINTS.play, 
+                choices[choice],
                 {
                     headers: {
-                        'Content-Type': 'application/json', // Ensure Content-Type is set to application/json
+                        'Content-Type': 'application/json'
                     },
                 }
             );
             setComputerChoice(response.data.computerChoice);
             setResult(response.data.result);
         } catch (error) {
-            console.error('Error playing the game:', error.response.data); // Log the error response for more details
+            console.error('Error playing the game:', error.response.data);
         }
     };
     
